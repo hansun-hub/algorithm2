@@ -1,31 +1,45 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{1BA74862-5CD7-4B00-82DE-121CDDE57AE2}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1BA74862-5CD7-4B00-82DE-121CDDE57AE2}.Debug|x64.ActiveCfg = Debug|x64
-		{1BA74862-5CD7-4B00-82DE-121CDDE57AE2}.Debug|x64.Build.0 = Debug|x64
-		{1BA74862-5CD7-4B00-82DE-121CDDE57AE2}.Debug|x86.ActiveCfg = Debug|Win32
-		{1BA74862-5CD7-4B00-82DE-121CDDE57AE2}.Debug|x86.Build.0 = Debug|Win32
-		{1BA74862-5CD7-4B00-82DE-121CDDE57AE2}.Release|x64.ActiveCfg = Release|x64
-		{1BA74862-5CD7-4B00-82DE-121CDDE57AE2}.Release|x64.Build.0 = Release|x64
-		{1BA74862-5CD7-4B00-82DE-121CDDE57AE2}.Release|x86.ActiveCfg = Release|Win32
-		{1BA74862-5CD7-4B00-82DE-121CDDE57AE2}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {235611F1-FA8C-4BB0-A286-0C879D0CDD71}
-	EndGlobalSection
-EndGlobal
+#include <stdio.h>
+
+void main() 
+{
+	int S[5][5] = { 0 };
+	int V = 0, M = 15, R = 0, C = 0;
+
+	for (int N = 1; N <= 14; N++) {
+		V = V + 1;
+		S[R][C] = V;
+		int NR = R - 1;
+		int NC = C + 1;
+		if (NR == -1) {
+			NR = C + 1;
+			NC = R;
+		}
+		R = NR;
+		C = NC;
+	}
+
+	V = V + 1;
+	S[R][C] = V;
+
+	for (int N = 1; N <= 10; N++) {
+
+		int NR = R - 1;
+		int NC = C + 1;
+		if (NC == 5) {
+			NR = C;
+			NC = R+1;
+		}
+		R = NR;
+		C = NC;
+		V = V + 1;
+		S[R][C] = V;
+	}
+
+	for (int NR = 0; NR <= 4; NR++) {
+		for (int NC = 0; NC <= 4; NC++) {
+			printf("%d\t", S[NR][NC]);
+		}
+		printf("\n");
+	}
+}
