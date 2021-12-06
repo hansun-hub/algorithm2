@@ -1,31 +1,33 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "algorithm assignment3", "algorithm assignment3\algorithm assignment3.vcxproj", "{02379EC7-4C19-42A9-A691-D30C048F7A4D}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{02379EC7-4C19-42A9-A691-D30C048F7A4D}.Debug|x64.ActiveCfg = Debug|x64
-		{02379EC7-4C19-42A9-A691-D30C048F7A4D}.Debug|x64.Build.0 = Debug|x64
-		{02379EC7-4C19-42A9-A691-D30C048F7A4D}.Debug|x86.ActiveCfg = Debug|Win32
-		{02379EC7-4C19-42A9-A691-D30C048F7A4D}.Debug|x86.Build.0 = Debug|Win32
-		{02379EC7-4C19-42A9-A691-D30C048F7A4D}.Release|x64.ActiveCfg = Release|x64
-		{02379EC7-4C19-42A9-A691-D30C048F7A4D}.Release|x64.Build.0 = Release|x64
-		{02379EC7-4C19-42A9-A691-D30C048F7A4D}.Release|x86.ActiveCfg = Release|Win32
-		{02379EC7-4C19-42A9-A691-D30C048F7A4D}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D47DBF8D-722D-4FA8-8408-CEB4D16C9FB1}
-	EndGlobalSection
-EndGlobal
+#include <stdio.h>
+void main() {
+	int A[5][5] = { 0 };
+	int N = 1, S = -1, i = 2,j = 2, K = 1;
+
+	A[2][2] = 1;
+	
+
+	while (1) {
+		for (int P = 0; P < K; P++) {
+			N = N + 1;
+			i = i + S;
+			A[i][j] = N;
+		}
+		S = S * (-1);
+		if (K == 5) {
+			break;
+		}
+		for (int P = 0; P < K; P++) {
+			N = N + 1;
+			j = j + S;
+			A[i][j] = N;
+		}
+		K = K + 1;
+	}
+	
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++)
+			printf("%d\t", A[i][j]);
+		printf("\n");
+	}
+}
